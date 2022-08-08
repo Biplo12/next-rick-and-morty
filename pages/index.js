@@ -1,23 +1,35 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { useState } from "react";
-export default function Home({ characters }) {
+import Character from "../components/Character";
+export default function Home(results) {
+  //states
   const [search, setSearch] = useState("");
-  const { results } = characters;
-  console.log(search, results);
-  const handleSubmit = (e) => {
+  const [characters, setCharacters] = useState(results.characters);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const results = await fetch("/api/search", {
+      method: "POST",
+      body: search,
+    });
+    const { characters } = await results.json();
+    setCharacters(characters);
   };
+
+  const onReset = async () => {
+    setSearch("");
+    setCharacters(results.characters);
+  };
+
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>Rick and morty API</title>
         <meta name="description" content="Rick and morty API using graphql" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+      <div className="home-container">
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -25,18 +37,13 @@ export default function Home({ characters }) {
             onChange={(e) => setSearch(e.target.value)}
           />
           <button type="submit">Search</button>
+          <button type="reset" onClick={onReset}>
+            Reset
+          </button>
         </form>
-        <div className={styles.grid}>
-          {results.map((result) => {
-            return (
-              <a href="#" key={result.id} className={styles.card}>
-                <h2>{result.name}</h2>
-              </a>
-            );
-          })}
-        </div>
-      </main>
-    </div>
+        <Character characters={characters} />
+      </div>
+    </>
   );
 }
 
@@ -49,14 +56,15 @@ export async function getStaticProps() {
 
   const { data } = await client.query({
     query: gql`
-      query Query {
-        characters(page: 2, filter: { name: "" }) {
+      query {
+        characters(page: 2) {
           info {
             count
           }
           results {
             name
             id
+            image
           }
         }
         location(id: 1) {
@@ -70,7 +78,7 @@ export async function getStaticProps() {
   });
   return {
     props: {
-      characters: data.characters,
+      characters: data.characters.results,
     },
   };
 }
