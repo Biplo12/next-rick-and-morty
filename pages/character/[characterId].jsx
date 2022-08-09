@@ -4,11 +4,13 @@ import Link from "next/link";
 import { useQuery } from "@apollo/client";
 import { CHARACTER_QUERY } from "../../graphql/apollo-queries";
 import { useRouter } from "next/router";
+
+const router = useRouter();
+const id = router.query.characterId;
 const characterId = () => {
-  const router = useRouter();
   const { data, loading, error } = useQuery(CHARACTER_QUERY, {
     variables: {
-      id: router.query.characterId,
+      id,
     },
   });
   if (loading) {
