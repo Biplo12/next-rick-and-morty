@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
-const Character = ({ characters }) => {
+const Character = ({ data }) => {
   return (
     <div className="character-container">
-      {characters.map((character) => {
+      {data.characters.results.map((character) => {
         return (
           <a href={`/character-details/${character.id}`} key={character.id}>
             <Image
