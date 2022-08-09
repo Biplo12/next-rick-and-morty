@@ -11,7 +11,7 @@ export const Container = styled.div`
 
 export const Card = styled.div`
   width: 250px;
-  height: 300xpx;
+  height: 300px;
   background: white;
   h2 {
     font-size: 1rem;
