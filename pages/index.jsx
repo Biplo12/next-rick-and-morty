@@ -1,12 +1,13 @@
 import Head from "next/head";
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { useState } from "react";
+import { CHARACTER_QUERY } from "../graphql/apollo-queries";
+import { client } from "../graphql/apollo-client";
 import Character from "../components/Character";
 export default function Home(results) {
   //states
   const [search, setSearch] = useState("");
   const [characters, setCharacters] = useState(results.characters);
-
+  const [page, setPage] = useState(0);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const results = await fetch("/api/search", {
@@ -30,6 +31,9 @@ export default function Home(results) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="home-container">
+        <button onClick={() => setPage(page + 1)}>Next page</button>
+        <p>Page {page}</p>
+        <button onClick={() => setPage(page - 1)}>Previous page</button>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -47,35 +51,20 @@ export default function Home(results) {
   );
 }
 
+const PAGE_SIZE = 10;
+
 export async function getStaticProps() {
-  const api_uri = "https://rickandmortyapi.com/graphql";
-  const client = new ApolloClient({
-    uri: api_uri,
-    cache: new InMemoryCache(),
+  const { loading, error, data } = await client.query({
+    query: CHARACTER_QUERY,
   });
 
-  const { data } = await client.query({
-    query: gql`
-      query {
-        characters(page: 2) {
-          info {
-            count
-          }
-          results {
-            name
-            id
-            image
-          }
-        }
-        location(id: 1) {
-          id
-        }
-        episodesByIds(ids: [1, 2]) {
-          id
-        }
-      }
-    `,
-  });
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    console.error(error);
+    return <div>Error!</div>;
+  }
   return {
     props: {
       characters: data.characters.results,
