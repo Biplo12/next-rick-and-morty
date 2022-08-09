@@ -10,6 +10,18 @@ export const CHARACTERS_QUERY = gql`
         name
         id
         image
+        status
+        species
+        location {
+          name
+        }
+        origin {
+          name
+        }
+        episode {
+          id
+          name
+        }
       }
     }
   }

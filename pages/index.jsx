@@ -2,7 +2,10 @@ import Head from "next/head";
 import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { CHARACTERS_QUERY } from "../graphql/apollo-queries";
-import Character from "../components/Character";
+import GlobalStyles from "../components/global.styled";
+import Character from "../components/Character/Character";
+import Navbar from "../components/Navbar/Navbar";
+import Header from "../components/Header/Header";
 
 export default function Home() {
   const [page, setPage] = useState(1);
@@ -36,7 +39,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="home-container">
-        <form onSubmit={handleSubmit}>
+        <GlobalStyles />
+        <Header />
+        <Navbar />
+        {/* <form onSubmit={handleSubmit}>
           <input
             type="text"
             name="searchbar"
@@ -48,21 +54,21 @@ export default function Home() {
           </button>
         </form>
         <button
-          onClick={() => {
-            setPage(page + 1);
+        onClick={() => {
+          setPage(page + 1);
           }}
-        >
+          >
           Next Page
-        </button>
-        <p>
+          </button>
+          <p>
           Page {page} / {page_number}
-        </p>
-        <button
+          </p>
+          <button
           disabled={page <= 1}
           onClick={() => setPage((prev) => prev - 1)}
-        >
+          >
           Previous Page
-        </button>
+        </button> */}
         <Character data={data} />
       </div>
     </>
