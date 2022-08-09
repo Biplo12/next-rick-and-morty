@@ -13,9 +13,9 @@ const Character = ({ data }) => {
     <Container>
       {data.characters.results.map((character) => {
         return (
-          <Card>
+          <Card key={character.id}>
             <Link href={`/character/${character.id}`}>
-              <a key={character.id}>
+              <a>
                 <Image
                   src={character.image}
                   alt={character.name}

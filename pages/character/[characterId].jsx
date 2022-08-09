@@ -6,10 +6,9 @@ import { CHARACTER_QUERY } from "../../graphql/apollo-queries";
 import { useRouter } from "next/router";
 const characterId = () => {
   const router = useRouter();
-  const id = router.query.characterId;
   const { data, loading, error } = useQuery(CHARACTER_QUERY, {
     variables: {
-      id,
+      id: router.query.characterId,
     },
   });
   if (loading) {
