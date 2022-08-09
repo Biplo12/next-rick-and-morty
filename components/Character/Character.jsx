@@ -24,24 +24,19 @@ const Character = ({ data }) => {
                   objectFit="cover"
                 />
                 <CardContent>
-                  <CardTop>
-                    <h2>{character.name}</h2>
-                    <p>
-                      <Status
-                        bg={
-                          character.status === "Alive"
-                            ? "green"
-                            : character.status === "Dead"
-                            ? "red"
-                            : "gray"
-                        }
-                      />
-                      {character.status}
-                    </p>
-                  </CardTop>
-
-                  <p>{character.species}</p>
-                  <p>{character.location.name}</p>
+                  <h2>{character.name}</h2>
+                  <p>
+                    <Status
+                      bg={
+                        character.status === "Alive"
+                          ? "green"
+                          : character.status === "Dead"
+                          ? "red"
+                          : "gray"
+                      }
+                    />
+                    {character.status}
+                  </p>
                 </CardContent>
               </a>
             </Link>

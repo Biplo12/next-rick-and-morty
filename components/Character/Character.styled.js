@@ -1,20 +1,17 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
-  height: auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, 250px);
   justify-content: center;
   gap: 3rem;
   padding: 3rem 0;
   justify-items: center;
-  background: #1d1b1c;
 `;
 
 export const Card = styled.div`
   width: 250px;
-  height: 325px;
+  height: 300xpx;
   background: white;
   h2 {
     font-size: 1rem;
@@ -26,6 +23,9 @@ export const Card = styled.div`
 
 export const CardContent = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 0 1rem;
   p {
     font-size: 0.75rem;

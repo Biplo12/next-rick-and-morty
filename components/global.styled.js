@@ -9,6 +9,7 @@ html, body{
     padding: 0;
     margin: 0;
     font-family: 'Poppins', sans-serif;
+    background-color: #1d1b1c;
 }
 ul{
     list-style: none;

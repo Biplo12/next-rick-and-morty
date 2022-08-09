@@ -1,6 +1,15 @@
 import Head from "next/head";
 import { useState } from "react";
 import { useQuery } from "@apollo/client";
+import {
+  Container,
+  Form,
+  Input,
+  SearchContainer,
+  Buttons,
+  Button,
+  PageContainer,
+} from "./Home.styled";
 import { CHARACTERS_QUERY } from "../graphql/apollo-queries";
 import GlobalStyles from "../components/global.styled";
 import Character from "../components/Character/Character";
@@ -38,39 +47,46 @@ export default function Home() {
         <meta name="description" content="Rick and morty API using graphql" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="home-container">
+      <Container>
         <GlobalStyles />
         <Header />
         <Navbar />
-        {/* <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="searchbar"
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <button type="submit">Search</button>
-          <button type="reset" onClick={onReset}>
-            Reset
-          </button>
-        </form>
-        <button
-        onClick={() => {
-          setPage(page + 1);
-          }}
-          >
-          Next Page
-          </button>
-          <p>
-          Page {page} / {page_number}
-          </p>
-          <button
-          disabled={page <= 1}
-          onClick={() => setPage((prev) => prev - 1)}
-          >
-          Previous Page
-        </button> */}
+        <Form onSubmit={handleSubmit}>
+          <SearchContainer>
+            <Input
+              type="text"
+              name="searchbar"
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <Buttons>
+              <Button type="submit">Search</Button>
+              <Button type="reset" onClick={onReset}>
+                Reset
+              </Button>
+            </Buttons>
+          </SearchContainer>
+          <PageContainer>
+            <Button
+              disabled={page <= 1}
+              onClick={() => setPage((prev) => prev - 1)}
+            >
+              Previous Page
+            </Button>
+            <p>
+              Page {page} / {page_number}
+            </p>
+            <Button
+              onClick={() => {
+                setPage(page + 1);
+              }}
+            >
+              Next Page
+            </Button>
+          </PageContainer>
+        </Form>
+
         <Character data={data} />
-      </div>
+      </Container>
     </>
   );
 }
