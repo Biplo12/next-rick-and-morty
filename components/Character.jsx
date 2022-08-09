@@ -5,7 +5,7 @@ const Character = ({ data }) => {
     <div className="character-container">
       {data.characters.results.map((character) => {
         return (
-          <a href={`/character-details/${character.id}`} key={character.id}>
+          <a href={`/character/${character.id}`} key={character.id}>
             <Image
               src={character.image}
               alt={character.name}
