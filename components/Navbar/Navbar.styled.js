@@ -4,8 +4,13 @@ export const Container = styled.div`
   width: 100%;
   height: 20vh;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 3rem;
+`;
+
+export const LogoContainer = styled.div`
+  display: flex;
 `;
 
 export const List = styled.ul`

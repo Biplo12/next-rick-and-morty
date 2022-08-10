@@ -29,11 +29,19 @@ const CharacterId = () => {
       <div className="error">
         <h1>Error occurred, please check console for further informations</h1>
         <h2>Check status of API server:</h2>
-        <a href="https://status.rickandmortyapi.com/" target={"_blank"}>
+        <a
+          href="https://status.rickandmortyapi.com/"
+          target={"_blank"}
+          rel="noreferrer"
+        >
           https://status.rickandmortyapi.com/
         </a>
         or
-        <a href="https://rickandmortyapi.com/api/character/1" target={"_blank"}>
+        <a
+          href="https://rickandmortyapi.com/api/character/1"
+          target={"_blank"}
+          rel="noreferrer"
+        >
           https://rickandmortyapi.com/api/character/1
         </a>
       </div>
@@ -43,16 +51,15 @@ const CharacterId = () => {
   const character = data?.character;
   if (!character)
     return (
-      <>
+      <div className="error">
         <h1>Character not found</h1>
         <Link href="/">
           <a>Go back to main page</a>
         </Link>
-      </>
+      </div>
     );
   return (
     <>
-      <Navbar />
       <CharacterDetails character={character} />
     </>
   );

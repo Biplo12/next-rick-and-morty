@@ -22,6 +22,9 @@ export const CharacterStatus = styled.div`
 `;
 export const CharacterInfo = styled.div`
   margin-left: 2rem;
+  span {
+    color: #1293a9;
+  }
 `;
 export const Status = styled.div`
   width: 15px;
@@ -30,4 +33,5 @@ export const Status = styled.div`
   background-color: ${(props) => props.bg};
   margin-right: 0.25rem;
   display: flex;
+  align-items: center;
 `;

@@ -39,11 +39,19 @@ export default function Home() {
       <div className="error">
         <h1>Error occurred, please check console for further informations</h1>
         <h2>Check status of API server:</h2>
-        <a href="https://status.rickandmortyapi.com/" target={"_blank"}>
+        <a
+          href="https://status.rickandmortyapi.com/"
+          target={"_blank"}
+          rel="noreferrer"
+        >
           https://status.rickandmortyapi.com/
         </a>
         or
-        <a href="https://rickandmortyapi.com/api/character/1" target={"_blank"}>
+        <a
+          href="https://rickandmortyapi.com/api/character/1"
+          target={"_blank"}
+          rel="noreferrer"
+        >
           https://rickandmortyapi.com/api/character/1
         </a>
       </div>
@@ -84,18 +92,22 @@ export default function Home() {
           </SearchContainer>
           <PageContainer>
             <Button
-              disabled={page <= 1}
+              disabled={page <= 1 || data.characters.info.count === null}
               onClick={() => setPage((prev) => prev - 1)}
             >
               Previous Page
             </Button>
             <p>
-              Page {page} / {page_number}
+              Page {data.characters.info.count === null ? 0 : page} /{" "}
+              {page_number}
             </p>
             <Button
               onClick={() => {
                 setPage(page + 1);
               }}
+              disabled={
+                page === page_number || data.characters.info.count === null
+              }
             >
               Next Page
             </Button>

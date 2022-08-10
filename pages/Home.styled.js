@@ -42,9 +42,14 @@ export const Button = styled.button`
   cursor: pointer;
   border: 1px solid #1293a9;
   padding: 0.5rem 1rem;
+  transition: 0.1s ease-in-out;
+  &:hover {
+    background-color: #1293a9;
+  }
 `;
 
 export const Input = styled.input`
+  width: 400px;
   border: none;
   background-color: transparent;
   outline: none;
