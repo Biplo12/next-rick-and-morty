@@ -6,6 +6,7 @@ import {
   Card,
   CardContent,
   CardTop,
+  CardBottom,
   Status,
 } from "./Character.styled";
 const Character = ({ data }) => {
@@ -24,19 +25,31 @@ const Character = ({ data }) => {
                   objectFit="cover"
                 />
                 <CardContent>
-                  <h2>{character.name}</h2>
-                  <p>
-                    <Status
-                      bg={
-                        character.status === "Alive"
-                          ? "green"
-                          : character.status === "Dead"
-                          ? "red"
-                          : "gray"
-                      }
-                    />
-                    {character.status}
-                  </p>
+                  <CardTop>
+                    <h2>{character.name}</h2>
+                    <p>
+                      <Status
+                        bg={
+                          character.status === "Alive"
+                            ? "green"
+                            : character.status === "Dead"
+                            ? "red"
+                            : "gray"
+                        }
+                      />
+                      {character.status}
+                    </p>
+                  </CardTop>
+                  <CardBottom>
+                    <p>
+                      <span>Race:&nbsp;</span>
+                      {character.species}
+                    </p>
+                    <p>
+                      <span>Location:&nbsp;</span>
+                      {character.location.name}
+                    </p>
+                  </CardBottom>
                 </CardContent>
               </a>
             </Link>

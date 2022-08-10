@@ -26,9 +26,8 @@ export default function Home() {
       result,
     },
   });
-  if (loading) {
-    return <h1>Loading</h1>;
-  }
+  if (loading) return <h1>Loading...</h1>;
+
   if (error) return `Error! ${error}`;
 
   const handleSubmit = async (e) => {
@@ -48,7 +47,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <GlobalStyles />
         <Header />
         <Navbar />
         <Form onSubmit={handleSubmit}>

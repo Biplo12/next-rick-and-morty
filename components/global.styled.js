@@ -10,6 +10,7 @@ html, body{
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background-color: #1d1b1c;
+    color: white;
 }
 ul{
     list-style: none;

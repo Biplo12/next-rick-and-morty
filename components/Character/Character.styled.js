@@ -11,7 +11,8 @@ export const Container = styled.div`
 
 export const Card = styled.div`
   width: 250px;
-  height: 300px;
+  min-height: 325px;
+  height: auto;
   background: white;
   h2 {
     font-size: 1rem;
@@ -23,10 +24,7 @@ export const Card = styled.div`
 
 export const CardContent = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
+  padding: 0 0.5rem 1rem 0.5rem;
   p {
     font-size: 0.75rem;
     display: flex;
@@ -40,6 +38,20 @@ export const CardTop = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+export const CardBottom = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+  p {
+    padding: 0.25rem 0;
+    font-size: 0.75rem;
+    span {
+      font-weight: 700;
+    }
+  }
 `;
 
 export const Status = styled.div`

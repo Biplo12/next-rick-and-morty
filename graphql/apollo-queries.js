@@ -15,13 +15,6 @@ export const CHARACTERS_QUERY = gql`
         location {
           name
         }
-        origin {
-          name
-        }
-        episode {
-          id
-          name
-        }
       }
     }
   }
@@ -34,6 +27,7 @@ export const CHARACTER_QUERY = gql`
       id
       image
       status
+      type
       location {
         name
       }
