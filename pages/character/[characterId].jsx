@@ -1,6 +1,5 @@
-import React from "react";
+import { useEffect } from "react";
 import CharacterDetails from "../../components/CharacterDetails/CharacterDetails";
-import Navbar from "../../components/Navbar/Navbar";
 import Link from "next/link";
 import { useQuery } from "@apollo/client";
 import { CHARACTER_QUERY } from "../../graphql/apollo-queries";
@@ -11,7 +10,7 @@ const CharacterId = () => {
   const id = router.query.CharacterId;
   const { data, loading, error } = useQuery(CHARACTER_QUERY, {
     variables: {
-      id,
+      id: router.isReady ? id : null,
     },
   });
   if (loading)
