@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
-import { Container } from "./About.styled";
+import { Container } from "../components/styles/About.styled";
 const About = () => {
   return (
     <>

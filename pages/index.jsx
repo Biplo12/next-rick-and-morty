@@ -9,7 +9,7 @@ import {
   Buttons,
   Button,
   PageContainer,
-} from "./Home.styled";
+} from "../components/styles/Home.styled";
 import { CHARACTERS_QUERY } from "../graphql/apollo-queries";
 import Character from "../components/Character/Character";
 import Navbar from "../components/Navbar/Navbar";
