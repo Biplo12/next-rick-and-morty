@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React from "react";
 import CharacterDetails from "../../components/CharacterDetails/CharacterDetails";
 import Link from "next/link";
 import { useQuery } from "@apollo/client";
@@ -7,10 +7,11 @@ import { useRouter } from "next/router";
 
 const CharacterId = () => {
   const router = useRouter();
-  const id = router.query.CharacterId;
+  const id = router.query.characterId;
+  console.log(id);
   const { data, loading, error } = useQuery(CHARACTER_QUERY, {
     variables: {
-      id: router.isReady ? id : null,
+      id,
     },
   });
   if (loading)

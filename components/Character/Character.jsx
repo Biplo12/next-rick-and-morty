@@ -13,50 +13,52 @@ import {
 const Character = ({ data }) => {
   return (
     <Container>
-      {data.characters.results.map((character) => {
-        return (
-          <Card key={character.id}>
-            <Link href={`/character/${character.id}`}>
-              <a>
-                <Image
-                  src={character.image}
-                  alt={character.name}
-                  width="250px"
-                  height="225px"
-                  objectFit="cover"
-                />
-                <CardContent>
-                  <CardTop>
-                    <h2>{character.name}</h2>
-                    <StatusContainer>
-                      <Status
-                        bg={
-                          character.status === "Alive"
-                            ? "green"
-                            : character.status === "Dead"
-                            ? "red"
-                            : "gray"
-                        }
-                      />
-                      {character.status}
-                    </StatusContainer>
-                  </CardTop>
-                  <CardBottom>
-                    <p>
-                      <span>Race:&nbsp;</span>
-                      {character.species}
-                    </p>
-                    <p>
-                      <span>Location:&nbsp;</span>
-                      {character.location.name}
-                    </p>
-                  </CardBottom>
-                </CardContent>
-              </a>
-            </Link>
-          </Card>
-        );
-      })}
+      {data.characters.results.map(
+        ({ id, image, name, status, species, location }) => {
+          return (
+            <Card key={id}>
+              <Link href={`/character/${id}`}>
+                <a>
+                  <Image
+                    src={image}
+                    alt={name}
+                    width="250px"
+                    height="225px"
+                    objectFit="cover"
+                  />
+                  <CardContent>
+                    <CardTop>
+                      <h2>{name}</h2>
+                      <StatusContainer>
+                        <Status
+                          bg={
+                            status === "Alive"
+                              ? "green"
+                              : status === "Dead"
+                              ? "red"
+                              : "gray"
+                          }
+                        />
+                        {status}
+                      </StatusContainer>
+                    </CardTop>
+                    <CardBottom>
+                      <p>
+                        <span>Race:&nbsp;</span>
+                        {species}
+                      </p>
+                      <p>
+                        <span>Location:&nbsp;</span>
+                        {location.name}
+                      </p>
+                    </CardBottom>
+                  </CardContent>
+                </a>
+              </Link>
+            </Card>
+          );
+        }
+      )}
     </Container>
   );
 };
