@@ -7,18 +7,26 @@ export const Container = styled.div`
   gap: 3rem;
   padding: 3rem 0;
   justify-items: center;
+  img {
+    border-radius: 10px 10px 0 0;
+  }
 `;
 
 export const Card = styled.div`
   width: 250px;
   min-height: 325px;
   height: auto;
-  background: white;
+  background: #374149;
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
   h2 {
     font-size: 1rem;
   }
   a {
     color: black;
+  }
+  &:hover {
+    transform: scale(1.1);
   }
 `;
 
@@ -60,4 +68,8 @@ export const Status = styled.div`
   border-radius: 50px;
   background-color: ${(props) => props.bg};
   margin-right: 0.25rem;
+`;
+export const StatusContainer = styled.div`
+  display: flex;
+  align-items: center;
 `;

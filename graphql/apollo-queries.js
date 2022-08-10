@@ -12,6 +12,7 @@ export const CHARACTERS_QUERY = gql`
         image
         status
         species
+        created
         location {
           name
         }
@@ -28,6 +29,8 @@ export const CHARACTER_QUERY = gql`
       image
       status
       type
+      gender
+      species
       location {
         name
       }

@@ -1,23 +1,46 @@
 import React from "react";
 import CharacterDetails from "../../components/CharacterDetails/CharacterDetails";
 import Navbar from "../../components/Navbar/Navbar";
-import Header from "../../components/Header/Header";
 import Link from "next/link";
 import { useQuery } from "@apollo/client";
 import { CHARACTER_QUERY } from "../../graphql/apollo-queries";
 import { useRouter } from "next/router";
 
-const characterId = () => {
+const CharacterId = () => {
   const router = useRouter();
-  const id = router.query.characterId;
+  const id = router.query.CharacterId;
   const { data, loading, error } = useQuery(CHARACTER_QUERY, {
     variables: {
       id,
     },
   });
-  if (error) return `Error! ${error}`;
+  if (loading)
+    return (
+      <div className="loading">
+        <div className="lds-ripple">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    );
+  if (error) {
+    console.log(error);
+    return (
+      <div className="error">
+        <h1>Error occurred, please check console for further informations</h1>
+        <h2>Check status of API server:</h2>
+        <a href="https://status.rickandmortyapi.com/" target={"_blank"}>
+          https://status.rickandmortyapi.com/
+        </a>
+        or
+        <a href="https://rickandmortyapi.com/api/character/1" target={"_blank"}>
+          https://rickandmortyapi.com/api/character/1
+        </a>
+      </div>
+    );
+  }
+
   const character = data?.character;
-  if (loading) return <h1>Loading...</h1>;
   if (!character)
     return (
       <>
@@ -29,11 +52,10 @@ const characterId = () => {
     );
   return (
     <>
-      <Header />
       <Navbar />
       <CharacterDetails character={character} />
     </>
   );
 };
 
-export default characterId;
+export default CharacterId;

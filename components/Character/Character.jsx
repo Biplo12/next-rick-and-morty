@@ -7,6 +7,7 @@ import {
   CardContent,
   CardTop,
   CardBottom,
+  StatusContainer,
   Status,
 } from "./Character.styled";
 const Character = ({ data }) => {
@@ -27,7 +28,7 @@ const Character = ({ data }) => {
                 <CardContent>
                   <CardTop>
                     <h2>{character.name}</h2>
-                    <p>
+                    <StatusContainer>
                       <Status
                         bg={
                           character.status === "Alive"
@@ -38,7 +39,7 @@ const Character = ({ data }) => {
                         }
                       />
                       {character.status}
-                    </p>
+                    </StatusContainer>
                   </CardTop>
                   <CardBottom>
                     <p>

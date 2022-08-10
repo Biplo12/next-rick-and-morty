@@ -11,10 +11,8 @@ import {
   PageContainer,
 } from "./Home.styled";
 import { CHARACTERS_QUERY } from "../graphql/apollo-queries";
-import GlobalStyles from "../components/global.styled";
 import Character from "../components/Character/Character";
 import Navbar from "../components/Navbar/Navbar";
-import Header from "../components/Header/Header";
 
 export default function Home() {
   const [page, setPage] = useState(1);
@@ -26,9 +24,31 @@ export default function Home() {
       result,
     },
   });
-  if (loading) return <h1>Loading...</h1>;
-
-  if (error) return `Error! ${error}`;
+  if (loading)
+    return (
+      <div className="loading">
+        <div className="lds-ripple">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    );
+  if (error) {
+    console.log(error);
+    return (
+      <div className="error">
+        <h1>Error occurred, please check console for further informations</h1>
+        <h2>Check status of API server:</h2>
+        <a href="https://status.rickandmortyapi.com/" target={"_blank"}>
+          https://status.rickandmortyapi.com/
+        </a>
+        or
+        <a href="https://rickandmortyapi.com/api/character/1" target={"_blank"}>
+          https://rickandmortyapi.com/api/character/1
+        </a>
+      </div>
+    );
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,7 +67,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <Header />
         <Navbar />
         <Form onSubmit={handleSubmit}>
           <SearchContainer>
@@ -82,7 +101,6 @@ export default function Home() {
             </Button>
           </PageContainer>
         </Form>
-
         <Character data={data} />
       </Container>
     </>

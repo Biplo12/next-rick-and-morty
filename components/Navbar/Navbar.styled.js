@@ -3,11 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   height: 20vh;
-  background-color: #171725;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  color: white;
 `;
 
 export const List = styled.ul`
