@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 const CharacterId = () => {
   const router = useRouter();
   const id = router.query.characterId;
-  console.log(id);
   const { data, loading, error } = useQuery(CHARACTER_QUERY, {
     variables: {
       id,

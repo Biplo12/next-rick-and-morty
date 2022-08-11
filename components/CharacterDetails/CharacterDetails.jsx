@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import CharacterEpisodes from "../../components/CharacterEpisodes/CharacterEpisodes";
+
 import Navbar from "../Navbar/Navbar";
 import {
   Container,
@@ -58,6 +60,7 @@ const CharacterDetails = ({ character }) => {
             </h3>
           </CharacterInfo>
         </Card>
+        <CharacterEpisodes character={character} />
       </Container>
     </>
   );

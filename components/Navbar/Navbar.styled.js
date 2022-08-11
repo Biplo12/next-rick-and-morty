@@ -15,6 +15,7 @@ export const LogoContainer = styled.div`
 
 export const List = styled.ul`
   display: flex;
+  align-items: center;
 `;
 
 export const Item = styled.li`

@@ -40,6 +40,7 @@ export const CHARACTER_QUERY = gql`
       episode {
         id
         name
+        episode
       }
     }
   }
